@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-// here we importing all the reducers from todoSlice
-import todo_reducers from "./Todoslice"
+import {configureStore } from "@reduxjs/toolkit";
+import rootreducer from "./CombineR";
 
-export default configureStore({
-  reducer:todo_reducers
+const store= configureStore ({
+    reducer:rootreducer
 });
   
+export default store

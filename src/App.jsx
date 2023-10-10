@@ -1,3 +1,5 @@
+import Completed from "./comp/Completed"
+import Pending from "./comp/Pending"
 import TodoForm from "./comp/TodoForm"
 import Todolist from "./comp/Todolist"
 import Total from "./comp/Total"
@@ -14,6 +16,8 @@ function App() {
       <h1>MY TODO LIST</h1>
       <TodoForm/>
       <Todolist/>
+      <Pending/>
+      <Completed/>
       <Total/>
   
     </div>

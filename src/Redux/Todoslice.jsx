@@ -3,12 +3,8 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 //this is the defoult state of todo
 
 const initialState = {
-  todos: [
-    // { id: 1, title: "hello world", completed: true },
-    // { id: 2, title: "hello world", completed: false },
-    // { id: 3, title: "hello world", completed: true},
-    // { id: 4, title: "hello world", completed: false }
-  ],
+  todos: []
+ 
 };
 
 // we created a slice means a state commponents
@@ -31,18 +27,15 @@ export const todoslice = createSlice({
         id: nanoid(),
         title: action.payload,
         completed: false,
-
       };
       // we pushing the accepted values form newtodo to initialState value
       state.todos.push(newtodo);
-      localStorage.setItem(newtodo.id,action.payload)
     },
     //* this function is ti delete the todos
 
     // filter always returns true values
     removetodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-      localStorage.removeItem(action.payload)
     },
     //* this todo is to update function
     updatetodo: (state, action) => {

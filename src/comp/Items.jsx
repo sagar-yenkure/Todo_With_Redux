@@ -1,29 +1,54 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { removetodo } from '../Redux/Todoslice'
+import React, { useState } from "react";
+import { BsCheckCircleFill,BsCheckCircle } from "react-icons/bs";
+import { RxCross2 } from "react-icons/rx";
+
+import { useDispatch } from "react-redux";
+import { removetodo } from "../Redux/Todoslice";
+import { decrement } from "../Redux/Countslice";
 const Items = (props) => {
+  const dispatch = useDispatch();
+  const { title, id } = props;
+  const [completed, setcompleted] = useState(false);
 
-	const dispatch=useDispatch()
-    const {completed,title ,id}=props
+  const handleremove = () => {
+    dispatch(removetodo(id));
+    dispatch(decrement(1));
+  };
+  const marked=()=>{
+    if(completed){
+      setcompleted(false)
+    }
+    else{
+      setcompleted(true)
+    }
 
-const handleremove=()=>{
-	console.log("this is the id "+id)
-	dispatch(removetodo(id))
-}
+  }
+
   return (
     <>
-    <li className={`list-group-item my-3 ${completed?'bg-blue-300':""}`}>
-			<div  className='flex justify-between  rounded-lg p-2'>
-				<span className='flex items-center'>
-					{/* <input type='checkbox' className='mr-3' checked={completed}></input> */}
-					<h1>{title}</h1>
-				</span>
-				{/* onClick={()=>dispatch(removetodo(id))}  */}
-				<button onClick={handleremove} className='btn bg-red-400 p-2 rounded-lg'>Delete</button>
-			</div>
-		</li>
-    </>
-  )  
-}
+      <li
+        key={id}
+        className={` rounded-xl list-group-item my-3 ${
+          completed ? "bg-blue-300" :"bg-white"
+        }`}
+      >
+        <div className="flex justify-between  rounded-lg p-3">
+          <span className="flex items-center justify-center space-x-3">
+            <button className="mt-1" onClick={marked}>
+              {completed?<BsCheckCircleFill size={20}/>:<BsCheckCircle size={20}/>}
+            </button>
+            
 
-export default Items
+            <h1 className="text-xl">{title}</h1>
+          </span>
+          
+          <button onClick={handleremove}>
+            <RxCross2 size={20} />
+          </button>
+        </div>
+      </li>
+    </>
+  );
+};
+
+export default Items;
