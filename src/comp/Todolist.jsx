@@ -12,8 +12,8 @@ const Todolist = () => {
       {/* <h1 className="text-red-600">{"please Enter a TODO"}</h1> */}
 
       <ul className="list-group">
-        {/* {todo.length===0 && <div className='text-xl font-extralight flex justify-center'> No TODO Available To Display 
-          </div>} */}
+        {todo.length===0 && <div className='text-xl font-extralight flex justify-center'> No TODO Available To Display 
+          </div>}
         {todo.map((el) => (
           <Items id={el.id} title={el.title} />
         ))}

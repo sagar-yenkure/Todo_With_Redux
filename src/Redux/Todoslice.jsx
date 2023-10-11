@@ -26,7 +26,6 @@ export const todoslice = createSlice({
       const newtodo = {
         id: nanoid(),
         title: action.payload,
-        completed: false,
       };
       // we pushing the accepted values form newtodo to initialState value
       state.todos.push(newtodo);
